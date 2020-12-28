@@ -1,0 +1,48 @@
+Due on 12/3, submit a single file as doc, docx, or pdf in Canvas.
+
+1. (20%) Run the code of hw6.q1 in the simulator of Atmel Studio.
+Use the stopwatch to profile the time of ledToggle, _delay_ms, and configureTimer.
+a) Describe how you profile their times, such as where to set break points and how many profiling trials.
+b) Show the profiling results in report.
+
+2. (20%)
+a) Implement the bar function in hw6.q2.c. The bar function should do the same job as the foo function, but unroll the while loop of the foo function.
+b) Compile hw6.q2 with no optimization option O0 and run the program in MPlab X. Use stopwatch to measure the times of running the foo function and the bar function. Report the times of the two functions.
+c) Compile hw6.q2 with optimization option O1 and run the program in MPlab X. Use stopwatch to measure the times of running the foo function and the bar function. Report the times of the two functions.
+
+3. (20%)
+a) Run the program in hw6.q3 with no optimization option O0 in Atmel Studio. Use stopwatch to measure the times of the crc16_foo function and the crc16_bar function. Report the times of the two functions.
+b) Run the program in hw6.q3 with optimization option O1 in Atmel Studio. Use stopwatch to measure the times of the crc16_foo function and the crc16_bar function. Report the times of the two functions.
+c) You may observe that using table is faster than no table with O0, but using table is similar to no table with O1. Analyze the reason for this observation.
+
+4. (25%)
+An application has three events: E1, E2 and E3. The application runs in an embedded system with a 40MHz clock. E1 occurs every 100ms and needs 20ms for execution. E2 occurs every 30ms and needs 3ms for execution. E3 occurs every 40ms and needs 3ms for execution.
+a.1) Over 3 seconds, how many times do E1, E2 and E3 occur respectively, and how much execution time do E1, E2 and E3 need respectively?
+a.2) Can E1, E2 and E3 be scheduled in this application?
+
+Power is proportional to frequency, i.e. P=cF. Assume the operating power at 40MHz is 40mW and the idle power at any frequency is 0.1mW. 
+b.1) To reduce power, the application wants to lower the clock frequency. The three events will occur at the same rate, but their execution times will be enlarged. What is the minimum frequency that the three events can be scheduled?
+b.2) Over 3 seconds, how much energy is consumed at 40MHz.
+b.3) Over 3 seconds, how much energy is consumed at the minimum frequency?
+
+5. (15%)
+The program below uses sleep to save power when no events to handle. Read http://www.nongnu.org/avr-libc/user-manual/group__avr__sleep.html
+a) Find and list all sleep modes defined for Atmega128 in avr/sleep.h
+b) Implement the setSleep() function for Atmega128 so that the CPU goes idle when sleeping. Copy and paste code in your report.
+c) Implement the sleep() function for Atmega128. Copy and paste code in your report.
+
+int main() {
+    setSleep();
+    initQueue(&queue);
+    while (1) {
+        // queue loop
+        while (!isEmpty(&queue)) {
+            // process the events in queue
+            uint8_t event = pop(&queue);
+            handleEvent(event);
+        }
+        sleep();
+    }
+}
+
+

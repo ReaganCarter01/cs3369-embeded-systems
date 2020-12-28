@@ -1,0 +1,79 @@
+Due on 10/13, submit a single file as doc, docx, or pdf in Canvas
+
+1. (20%)
+Define a union data struct WORD_T for a uint16_t integer so that a value can be assigned to a WORD_T integer in three ways:
+(1) To assign the value to each bit of the integer,
+(2) To assign the value to each byte of the integer,
+(3) To assign the value to the integer directly.
+
+a) Show the code of defining the union data struct WORD_T.
+b) Show the code to assign 17 to the WORD_T variable foo.
+b.1) Assign 17 to the bits of foo.
+b.2) Assign 17 to the bytes of foo.
+b.3) Assign 17 to the integer of foo.
+
+Hint: You may refer to the source file ${xc16}/support/PIC24E/h/p24EP512GU810.h. ${xc16} is where you installed the xc16 compiler.
+
+=== code ===
+#typedef union _WORD_T {
+  /* add your union here for (a) */
+} WORD_T;
+
+WORD_T foo;
+/* add your code here for (b) */
+=== end of code ===
+
+2. (10%)
+Read the following code.
+(a) Add one line of C code that defines a macro, so that "main()" will call "foowithdebug()".
+(b) Read gcc command options about macro at https://gcc.gnu.org/onlinedocs/gcc/Preprocessor-Options.html
+    Show the screenshot where you add a proper gcc macro option in MPLab X, so that "main()" will call "foowithdebug()".
+
+=== code ===
+int foowithdebug() { ... }
+int foo() { ... }
+int main() {
+    #ifdef DEBUG
+    foowithdebug();
+    #else
+    foo();
+    #endif
+}
+=== end of code ===
+
+3. (15%)
+Briefly explain what are the functions declared in each of the header files: stdlib.h, string.h, math.h, ctype.h? (Do NOT list and explain each function.)
+
+4. (15%) 
+Read the following code.
+a) Draw a memory layout to show the relations of a, b and c.
+b) What are the value in x and y?
+
+=== code ===
+char a[3][10] = {"abcdefg", "1234567", "!@#$%^&"};
+char* b[3];
+char** c;
+b[0] = &a[0][0];
+b[1] = &a[1][0];
+b[2] = &a[2][0];
+c = b;
+char x = b[0][3];
+char y = b[0][13];
+=== end of code ===
+
+5. (20%)
+Read the reference at http://www.nongnu.org/avr-libc/user-manual/pgmspace.html and http://www.nongnu.org/avr-libc/user-manual/group__util__crc.html
+Make a program to calculate CRC-16 of the code in program memory. Assume the code size is always 4KBytes.
+a) Copy & paset your code in report.
+b) Run your program in AVR Studio and show the CRC value of your program in a screen shot of AVR Studio.
+
+6. (20%)
+Read the schematics and datasheets of Atmega128 and Pic24e chips. The two schematics (hw3.sch.atmega.pdf and hw3.sch.pic.pdf) are included, and the datasheets are in canvas/course/pages/resources.
+Find three types of pins: (i) reset, (ii) clock and (iii) the IO pins in ports A.
+a) Document the three types of pins of Atmega128 in a table. The example table "hw3.pins.atmega.docx" is included.
+b) Document the three types of pins of Pic24e in a table. The example table "hw3.pins.pic.docx"is included. 
+Add rows to the example tables if necessary. Sort IO pins in ascending order.
+
+
+
+

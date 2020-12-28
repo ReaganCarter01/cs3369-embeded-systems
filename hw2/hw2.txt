@@ -1,0 +1,52 @@
+Due on 9/29, submit a single file as doc, docx, or pdf in Canvas
+
+1. (30%)
+If you do not have yet, install the command-line tool chains for embedded software development, including two cross-compilers avr-gcc (Linux or Windows) and xc16-gcc (Linux, Windows, or Mac).
+Report the following for the two cross-compilers respectively.
+
+a) The version of the two compilers. Use the command like "xxx-gcc --version".
+
+b) The folders where the two compilers are installed. You can use the command like "xxx-gcc -v".
+
+c) The names of the avr-xxx executables and the xc16-xxx executables, for example, avr-gcc, avr-objdump and etc. At least find 5 executables.
+
+d) Compile "hw2.c" with avr-gcc and xc16-gcc and show the screenshots of compilation. The commands are.
+   "avr-gcc -o hw2.avr hw2.c -mmcu=atmega128"
+   "xc16-gcc -o hw2.pic hw2.c -mcpu=24EP512GU810 -Wl,,--script=p24EP512GU810.gld"
+
+e) Run the two executable "hw2.avr" and "hw2.pic" in your computer and show the screenshots of the execution results.
+
+2. (55%)
+"hw2.avr.asm" is the AVR assembly dump of the executable built from "hw2.c". Read "hw2.avr.asm" and report the following:
+
+a) Convert all bytes in the .data section, <__data_start>, to ASCII chars.
+
+b) What is the data in the .data section and where is the data in the source code "hw2.c"?
+
+c) Comment each line of the code from line 8c to 96, i.e. the code block <__ctors_end>.
+
+d) Explain what the code block <__ctors_end> does. What is the address of the stack bottom? Hint: IO 0x3e and 0x3d are the stack pointer.
+
+e) Comment each line of the code from line 98 to b0, i.e. the code block <__do_copy_data>.
+
+f) Explain what the code block <__do_copy_data> does. How many bytes of data are copied to which address in the data memory? Hint: elpm is to load one byte from program memory (not data memory) to a register.
+
+g) Comment each line of the code from line e2 to ee.
+
+h) How are the arguments passed to calling the function strncpy? Which registers carry the first argument? Which registers carry the second argument?
+
+i) How is the char array buf[] represented in AVR?
+
+j) Comment each line of the code from line f2 to f6.
+
+k) How is the argument passed to calling the function puts (printf)? Which registers carry the argument?
+
+3. (15%)
+Gcc defines integer types in stdint.h and bool type in stdbool.h.
+
+a) Report the folders of the two header files in avr-gcc and xc16 respectively. No stdbool.h for avr-gcc.
+
+b) Report the type definitions of int8_t, uint8_t, int16_t, uint16_t, int32_t, uint32_t, int64_t, uint64_t.
+
+c) Report the type definition of bool, and the values of true and false.
+

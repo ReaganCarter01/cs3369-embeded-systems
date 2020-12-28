@@ -1,0 +1,53 @@
+Due on 11/17, submit a single file as doc, docx, or pdf in Canvas.
+Please follow the example code attached in the package.
+
+1. (20%) A motor rotates at 1000 RPM (rotation per minute). We can use timer and delay to generate a PWM signal to slow the motor to 10RPM.
+
+(a) The period of PWM is 20ms. What should be the length of duty in each PWM period to reduce the rotation speed to 10RPM? Assume no mechanical delay in motor on the change of PWM signal.
+
+(b) Modify the code in hw5.q1 to make a PIC24E program to reduce the motor to 10RPM. Note that you cannot use __delay_ms(), and need to find another proper delay function from "libpic30.h". Copy your code of main.c and timerint.h in your report and comment your code.
+
+2. (25%)
+A Queue is designed to be deterministic with a fixed maximum length.
+The struct of Queue is below: a currEvent and an array.
+{currEvent, {[0: Ex], [1: Ex], [2: Ex], [3: Ex]}}
+
+An example of Queue is below.
+{E3, {[0: END], [1: E2], [2: END], [3: E1]}}
+It means the current pending event is E3. The following events in order are E1 and E2.
+The currEvent E3 points to [3: E1], where 3 is the index of the array and E1 means the next event E1.
+Then, the next event E1 points to [1: E2], where 1 is the index of the array and E2 means the next event E2.
+Then, the next event E2 points to [2: END], where 2 is the index of the array and END means the end, i.e. no more events.
+ 
+When the Queue has no events, it has the following:
+{END, {[0: END], [1: END], [2: END], [3: END]}}
+
+(a) Assume in the system, the events happened in the following time order:
+T0: no events in queue.
+T1: E1 is added to the queue.
+T2: E0 is added to the queue.
+T3: E3 is added to the queue.
+T4: E1 is popped from the queue.
+T5: E2 is added to the queue.
+
+Fill in the table in hw5.q2.docx to show the queues after the time points, T1, T2, T3, T4, T5. Include the table in your submission (not as a separte file).
+
+(b) The Queue is declared in event.h. Implement the four functions of Queue in event.c. main.c is provided for your reference only.
+Copy your code in event.c to your report and comment your code.
+
+3. (15%)
+A system has a 40MHz processor. It needs to process audio signals with a 40000Hz interrupt.
+(a) How many cycles are between two interrupts?
+(b) Assume 20 cycles are needed for switching context. What is the percentage of time for switching context?
+(c) Assume 380 cycles are needed for the ISR. What is the percentage of time in total for processing an interrupt?
+
+4. (20%)
+Read the linker script of pic24ep in hw5.q4. Run a pic24ep program in MPLab X, and watch memory of the program in debugger.
+a) Fill the table in hw5.q4.docx and include the table in your submission (not as a separte file).
+b) Show a screen shot of watching memory in debugger.
+
+5. (20%) Use avrgcc to compile the code in hw5.q5 with different optimizations: O0, O1, O2, O3, Os.
+Makefile is provided, and you may run "make" to get the results.
+Otherwise, you can refer to Makefile to choose proper compiler command and options to get results.
+Copy and paste your results in the table in hw5.q5.docx. Include the table in your submission (not as a separte file).
+
